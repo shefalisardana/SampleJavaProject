@@ -8,7 +8,7 @@ pipeline {
             steps {
                 echo "Compiling the Code.........."
               git credentialsId: 'Github-Details', url: 'https://github.com/shefalisardana/SampleJavaProject'
-                bat "mvn compile"
+                bat "mvn package"
             }
         }
         
@@ -16,7 +16,7 @@ pipeline {
         
         steps{
       echo "copying the code to ansible server"
-      sshPublisher(publishers: [sshPublisherDesc(configName: 'Ansible-Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//javaproject//javajar', remoteDirectorySDF: false, removePrefix: 'target', sourceFiles: 'target/*.jar')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+      sshPublisher(publishers: [sshPublisherDesc(configName: 'Ansible-Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//root//javaproject//javajar', remoteDirectorySDF: false, removePrefix: 'target', sourceFiles: 'target/*.jar')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
              
         }
         

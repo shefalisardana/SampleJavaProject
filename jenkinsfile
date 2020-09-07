@@ -1,13 +1,13 @@
- pipeline {
+pipeline {
     
     agent any
     
 
     stages {
-        bat('Compile') {
+        stage('Compile') {
             steps {
                 echo "Compiling the Code.........."
-              git credentialsId: 'Github-Details', url: 'https://github.com/shefalisardana/SampleJavaProject'
+              git credentialsId: 'Github-Details', url: 'https://github.com/shefalisardana/SampleWebProject'
                 bat "mvn compile"
             }
         }

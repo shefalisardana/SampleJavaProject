@@ -4,11 +4,11 @@
     
 
     stages {
-        sh('Compile') {
+        bat('Compile') {
             steps {
                 echo "Compiling the Code.........."
               git credentialsId: 'Github-Details', url: 'https://github.com/shefalisardana/SampleJavaProject'
-                sh "mvn compile"
+                bat "mvn compile"
             }
         }
         
